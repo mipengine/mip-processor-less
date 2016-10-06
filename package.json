@@ -1,0 +1,39 @@
+{
+    "name": "mip-processor-less",
+    "description": "MIP Processor For LESS Compile",
+    "version": "1.0.0",
+
+    "keywords": [
+        "mip",
+        "tool",
+        "build",
+        "processor",
+        "less"
+    ],
+
+    "files": [
+        "lib",
+        "index.js"
+    ],
+
+    "dependencies": {
+        "mip-processor": "^1.0.0",
+        "less": "^2.7.1"
+    },
+
+    "engines": {
+        "node": ">= 4.0.0"
+    },
+
+    "contributors": [
+        { "name": "erik", "email": "errorrik@gmail.com" }
+    ],
+
+    "main": "index.js",
+
+    "license": "MIT",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/mipengine/mip-processor-less.git"
+    }
+}
