@@ -8,11 +8,15 @@ function MockFile(options) {
 }
 
 MockFile.prototype.setData = function (data) {
-    this.data = data
+    this.data = data;
+};
+
+MockFile.prototype.getData = function () {
+    return this.data;
 };
 
 function MockBuilder() {
-    this.processFiles = [
+    this.files = [
         new MockFile({
             data: 'body {background: red}',
             fullPath: '/project/1.js',
@@ -31,8 +35,8 @@ function MockBuilder() {
     ];
 }
 
-MockBuilder.prototype.getProcessFiles = function () {
-    return this.processFiles;
+MockBuilder.prototype.getFiles = function () {
+    return this.files;
 };
 
 describe("LESS Compressor", function () {
@@ -42,10 +46,10 @@ describe("LESS Compressor", function () {
         var builder = new MockBuilder();
 
         processor.process(builder).then(function () {
-            var files = builder.getProcessFiles();
-            expect(/body\s+\{/i.test(files[0].data)).toBeTruthy();
-            expect(/body\s+\{/i.test(files[1].data)).toBeTruthy();
-            expect(/^body\{background:red\}$/i.test(files[2].data)).toBeTruthy();
+            var files = builder.getFiles();
+            expect(/body\s+\{/i.test(files[0].getData())).toBeTruthy();
+            expect(/body\s+\{/i.test(files[1].getData())).toBeTruthy();
+            expect(/^body\{background:red\}$/i.test(files[2].getData())).toBeTruthy();
 
             done();
         });
@@ -56,7 +60,7 @@ describe("LESS Compressor", function () {
         var builder = new MockBuilder();
 
         processor.process(builder).then(function () {
-            var files = builder.getProcessFiles();
+            var files = builder.getFiles();
             expect(/\.css$/i.test(files[2].outputPath)).toBeTruthy();
 
             done();
