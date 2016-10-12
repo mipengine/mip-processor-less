@@ -39,6 +39,9 @@ MockBuilder.prototype.getFiles = function () {
     return this.files;
 };
 
+MockBuilder.prototype.notify = function () {
+};
+
 describe("LESS Compressor", function () {
 
     it("process *.less by default", function (done) {
